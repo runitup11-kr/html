@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+:root {
+  --primary: #1e1e1e;
+  --point: #de5126;
+  font-family: "Anton", sans-serif;
+}
+body,
+html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+ul,
+li,
+dl,
+dt,
+dd,
+p,
+span,
+h3,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+ul,
+li {
+  list-style: none;
+}
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* 텍스트 슬라이드 */
+#inc03 {
+  max-width: 1500px;
+}
+#inc03 .marquee__wrap {
+  overflow: hidden;
+}
+#inc03 .marquee__wrap .marquee__inner {
+  display: flex;
+  transform: translateX(0);
+  animation: marquee 10s linear infinite;
+}
+#inc03 .marquee__wrap .marquee-list {
+  display: flex;
+  gap: 100px;
+  padding-right: 100px;
+}
+#inc03 .marquee__wrap .marquee-list .marquee-item {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 100%;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--point);
+  background: linear-gradient(to top, var(--point) 50%, transparent 50%);
+  background-size: 200% 200%;
+  background-position: top;
+  background-clip: text;
+  transition: background-position 0.3s ease;
+}
+#inc03 .marquee__wrap .marquee-list .marquee-item:hover {
+  background-position: bottom;
+}
+/* 애니메이션 효과 */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1022.5px);
+  }
+}

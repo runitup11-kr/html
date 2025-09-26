@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+      <legend>필요사항</legend>
+      <textarea name="" id="" cols="20" rows="5"required placeholder="메모"></textarea>
+      <fieldset>
+        <legend>choice</legend>
+        <ul>
+          <li>
+            <select name="a" id="a">
+              <option value="k3">k3</option>
+              <option value="k5">k5</option>
+              <option value="k7">k7</option>
+              <option value="k9">k9</option>
+            </select>
+          </li>
+          <li>
+            <label for="color">white</label>
+            <input type="radio" name="delivery" id="color" value="color" />
+          </li>
+          <li>
+            <label for="color">black</label>
+            <input type="radio" name="delivery" id="color" value="color" />
+          </li>
+          <li>
+            <label for="color">gray</label>
+            <input type="radio" name="delivery" id="color" value="color" />
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>tel</legend>
+        <ul>
+          <li>
+            <label for="tel">전화번호</label>
+            <input
+              type="tel"
+              id="tel"
+              required
+              placeholder="전화번호를 입력하세요"
+            />
+          </li>
+        </ul>
+      </fieldset>
+    </fieldset>
+    <button type="reset">초기화</button>
+    <button type="button" onclick="alert('제출완료')">제출하기</button>
+    </form>
+  </body>
+</html>

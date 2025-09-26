@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css");
+
+:root {
+  --mainsize: 1400px; /*최대 너비 같은 곳에 쓰려고 만든 값*/
+  --radius: 25px; /* 모서리 둥글기 */
+  --primary: #7c0019; /* 포인트 색(딥 레드). */
+  --k-font: "pretendard"; /*폰트 패밀리 이름 */
+  --e-font: "Outfit"; /*폰트 패밀리 이름 */
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+ul,
+li,
+dl,
+dt,
+dd,
+p,
+span,
+h3,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+ul,
+li {
+  list-style: none;
+}
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.lk_box {
+  display: flex;
+  gap: 20px;
+  padding: 100px;
+}
+
+.lk_box li {
+  width: 50%;
+}
+
+.lk_box li:hover {
+  width: 55%;
+}
+
+.lk_box a {
+  position: relative;
+  display: block;
+  padding: 70px 70px 70px 50px;
+  color: #fff;
+}
+
+.lk_box a .e_txt {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: var(--e-font);
+}
+
+.lk_box a div {
+  margin-top: 30px;
+}
+
+.lk_box a h3 {
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.lk_box a p {
+  opacity: 0.5;
+}
+
+.lk_box li {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-image: url("https://edu1041.shiningcorp.com/sh_img/include/include_05/img/bg01.jpg");
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s;
+}
+
+.lk_box li:nth-child(2) {
+  background-image: url("https://edu1041.shiningcorp.com/sh_img/include/include_05/img/bg02.jpg");
+}
+
+.lk_box li:nth-child(2) em {
+  background: #111;
+}
+
+.lk_box .radius {
+  position: absolute;
+  z-index: 10;
+  bottom: -5px;
+  right: -3px;
+}
+
+.lk_box .radius em {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  display: block;
+  padding: 10px 20px;
+  border: 5px solid #fff;
+  border-radius: 50px;
+  color: #fff;
+  background: var(--primary);
+  font-style: normal;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.lk_box .radius:before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  bottom: 5px;
+  z-index: -1;
+  width: var(--radius);
+  height: var(--radius);
+  border-radius: 0 0 var(--radius) 0;
+  box-shadow: var(--radius) var(--radius) 0 var(--radius) #fff;
+}
+
+.lk_box .radius:after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  top: -25px;
+  z-index: -1;
+  width: var(--radius);
+  height: var(--radius);
+  border-radius: 0 0 var(--radius) 0;
+  box-shadow: var(--radius) var(--radius) 0 var(--radius) #fff;
+}
+
+.lk_box li:hover .radius em {
+  padding: 10px 30px;
+}
+
+.lk_box li:hover a h3:after {
+  width: 100%;
+}
+/* 반응형 [s] */
+@media (max-width: 1024px) {
+  .lk_box {
+    padding: 0 15px;
+  }
+  .lk_box li:hover {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .lk_box {
+    flex-direction: column;
+  }
+  .lk_box li {
+    width: 100%;
+  }
+  .lk_box a {
+    height: auto;
+    padding: 40px;
+  }
+  .lk_box a h3 {
+    font-size: 18px;
+  }
+  .lk_box .radius em {
+    font-size: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .big_txt {
+    font-size: 25px;
+  }
+  .lk_box a {
+    padding: 30px 30px 50px 30px;
+  }
+  .lk_box .radius em {
+    font-size: 12px;
+  }
+}
+@media (max-width: 390px) {
+  .lk_box a {
+    padding: 20px 20px 60px 20px;
+  }
+  .lk_box a h3 {
+    font-size: 16px;
+  }
+}
+/* 반응형 [e] */

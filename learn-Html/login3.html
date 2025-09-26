@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+  </head>
+  <body>
+    <form method="POST" action="/signup">
+      <!---method post = 데이터가 http post 요청으로 전송-->
+      <!---서버의 signup 앤드포인트에 요청-->
+      <form>
+        <fieldset>
+          <legend>회원가입</legend>
+          <ul>
+            <li>
+              <label for="email">이메일</label>
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="이메일을 입력하세요."
+              />
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <label for="password">비밀번호</label>
+              <input
+                type="password"
+                id="password"
+                required
+                placeholder="비밀번호를 입력하세요"
+              />
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <label for="tel">전화번호</label>
+              <input
+                type="tel"
+                id="tel"
+                required
+                pattern="[0-9]+"
+                placeholder="전화번호를 입력하세요."
+              />
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <label for="date">생년월일</label>
+              <input
+                type="date"
+                id="date"
+                required
+                pattern="\d{4}-\d{2}-\d{2}"
+                min="1900-01-01"
+                max="2025-09-23"
+                placeholder="예:2000-01-01"
+              />
+            </li>
+          </ul>
+        </fieldset>
+        <input type="submit" value="가입하기" />
+      </form>
+    </form>
+  </body>
+</html>
