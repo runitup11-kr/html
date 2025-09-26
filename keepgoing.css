@@ -1,8 +1,0 @@
-@keyframes soundcloud {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-1022.5px);
-  }
-}
