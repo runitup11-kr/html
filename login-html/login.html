@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="login.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>login</title>
   </head>
   <body>
-    </form>
-    <form action= "http://127.0.0.1:5500/login-html/keepgoing.html" target="_blank">
-      <fieldset>
-        <legend>로그인</legend>
-        <ul>
-          <li>
-            <label for="email">이메일</label>
-            <input
-              type="email"
-              id="email"
-              required
-              placeholder="이메일을 입력하세요."
-            />
-          </li>
-          <li>
-            <label for="password">비밀번호</label>
-            <input
-              type="password"
-              id="password"
-              required
-              placeholder="비밀번호를 입력하세요."
-            />
-          </li>
-        </ul>
-      </fieldset>
-      <input type="submit" value="로그인" />
-    </form>
-                <form action="http://127.0.0.1:5500/login-html/login3.html" target="bla">
-      <input type="submit" value="회원가입" />
+    <div class="login-box">
+      <h1>Login</h1>
+
+      <form
+        action="http://127.0.0.1:5500/login-html/keepgoing.html"
+        target="_blank"
+      >
+        <div class="user-box">
+          <input type="email" id="email" required />
+          <label>Username</label>
+        </div>
+        <div class="user-box">
+          <input type="password" id="password" required />
+          <label>Password</label>
+        </div>
+        <input type="submit" value="로그인" />
       </form>
+      <form action="http://127.0.0.1:5500/login-html/login3.html" target="bla">
+        <input type="submit" value="회원가입" />
+      </form>
+    </div>
   </body>
 </html>
