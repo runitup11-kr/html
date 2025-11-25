@@ -1,0 +1,196 @@
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+const answerBox = document.getElementById("answerBox");
+
+// 일본어 → 한국어
+const words = [
+  { jp: "ねこ", kr: "고양이" },
+  { jp: "いぬ", kr: "개" },
+  { jp: "みず", kr: "물" },
+  { jp: "ひと", kr: "사람" },
+  { jp: "そら", kr: "하늘" },
+  { jp: "やま", kr: "산" },
+  { jp: "かわ", kr: "강" },
+  { jp: "くるま", kr: "자동차" },
+  { jp: "えき", kr: "역" },
+  { jp: "はな", kr: "꽃" },
+  { jp: "あめ", kr: "비" },
+  { jp: "ゆき", kr: "눈" },
+  { jp: "うち", kr: "집" },
+  { jp: "て", kr: "손" },
+  { jp: "あし", kr: "발" },
+  { jp: "かぜ", kr: "바람" },
+  { jp: "ひ", kr: "불" },
+  { jp: "つき", kr: "달" },
+  { jp: "たいよう", kr: "태양" },
+  { jp: "き", kr: "나무" },
+  { jp: "そと", kr: "밖" },
+  { jp: "なか", kr: "안" },
+  { jp: "ともだち", kr: "친구" },
+  { jp: "せんせい", kr: "선생님" },
+  { jp: "がっこう", kr: "학교" },
+  { jp: "ほん", kr: "책" },
+  { jp: "ことば", kr: "단어" },
+  { jp: "ねむい", kr: "졸리다" },
+  { jp: "たべる", kr: "먹다" },
+  { jp: "のむ", kr: "마시다" },
+  { jp: "みる", kr: "보다" },
+  { jp: "きく", kr: "듣다" },
+  { jp: "いく", kr: "가다" },
+  { jp: "くる", kr: "오다" },
+  { jp: "かう", kr: "사다" },
+  { jp: "おかね", kr: "돈" },
+  { jp: "まど", kr: "창문" },
+  { jp: "へや", kr: "방" },
+  { jp: "せかい", kr: "세계" },
+  { jp: "じかん", kr: "시간" },
+  { jp: "でんしゃ", kr: "전철" },
+  { jp: "かみ", kr: "종이" },
+  { jp: "うみ", kr: "바다" },
+  { jp: "そら", kr: "하늘" },
+  { jp: "きもち", kr: "기분" },
+  { jp: "あさ", kr: "아침" },
+  { jp: "よる", kr: "밤" },
+  { jp: "ひる", kr: "낮" },
+];
+
+let drops = [];
+let score = 0;
+let hp = 20;
+const GOAL_SCORE = 10;
+let gameOver = false;
+
+// 단어 생성
+function createDrop() {
+  const w = words[Math.floor(Math.random() * words.length)];
+
+  drops.push({
+    jp: w.jp,
+    kr: w.kr,
+    x: Math.random() * (canvas.width - 50),
+    y: 0,
+    speed: 0.3 + Math.random() * 0.5,
+  });
+}
+
+function checkBottom() {
+  if (gameOver) return;
+
+  for (let i = 0; i < drops.length; i++) {
+    if (drops[i].y > canvas.height - 10) {
+      drops.splice(i, 1);
+      hp--;
+
+      if (hp <= 0) {
+        endGame(false); //패배
+        return;
+      }
+    }
+  }
+}
+
+// 단어 떨어뜨리기
+function updateDrops() {
+  drops.forEach((drop) => {
+    drop.y += drop.speed * 0.5;
+
+    ctx.fillStyle = "blue";
+    ctx.font = "40px Arial";
+    ctx.fillText(drop.jp, drop.x, drop.y);
+  });
+}
+//게임 화면 구성
+function drawUI() {
+  ctx.fillStyle = "red";
+  ctx.font = "30px 'Verdana'";
+  ctx.fillText("HP:" + hp, 10, 25);
+  ctx.fillText("Score:" + score, canvas.width - 120, 25);
+}
+
+// 메인 루프
+// 메인 루프 (수정된 update 함수)
+function update() {
+  if (gameOver) {
+    return;
+  }
+
+  // --- (이 아래는 기존 로직 그대로 유지) ---
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 일정 확률로 단어 떨어뜨리기
+  if (drops.length < 5 && Math.random() < 0.05) {
+    createDrop();
+  }
+
+  updateDrops();
+  checkBottom();
+  drawUI();
+
+  requestAnimationFrame(update);
+}
+
+update(); // ★ 반드시 필요함: 이거 빠지면 단어가 안 떨어짐
+
+// 정답 입력 처리
+answerBox.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    if (gameOver) return;
+    const answer = answerBox.value.trim();
+    let correct = false;
+
+    // drops 배열에서 정답 찾기
+    for (let i = 0; i < drops.length; i++) {
+      if (drops[i].kr === answer) {
+        drops.splice(i, 1); // 제거
+        score++;
+        correct = true;
+
+        // 점수 올라가면 목표 점수 체크
+        if (score >= GOAL_SCORE) {
+          endGame(true); //승리!!
+          return;
+        }
+
+        break;
+      }
+    }
+
+    if (correct) {
+      console.log("정답");
+    } else {
+      console.log("오답");
+    }
+
+    answerBox.value = "";
+  }
+});
+
+function endGame(isWin) {
+  gameOver = true;
+  answerBox.disabled = true;
+  drops = [];
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "black";
+  ctx.font = "40px Arial";
+  ctx.textAlign = "center"; // 중앙 정렬
+
+  if (isWin) {
+    ctx.fillText("게임 클리어!", canvas.width / 2 - 150, canvas.height / 2);
+  } else {
+    ctx.fillText("게임 실패 ㅠㅠ", canvas.width / 2 - 120, canvas.height / 2);
+  }
+  ctx.font = "24px Arial";
+  ctx.fillText(
+    `최종 점수: ${score}점`,
+    canvas.width / 2,
+    canvas.height / 2 + 60
+  );
+  ctx.textAlign = "left";
+
+  //1초후에 알림
+  setTimeout(() => {
+    alert(isWin ? "게임 클리어!" : "실패 ㅠ");
+  }, 1000);
+}
