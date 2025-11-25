@@ -1,0 +1,24 @@
+body {
+  background: url();
+  text-align: center;
+  margin-top: 30px;
+}
+
+canvas {
+  /*캔버스 스타일 */
+  background: url(https://i.pinimg.com/originals/26/92/9f/26929f59519142df6502d1cfb27c28d6.gif);
+  border: 2px solid white;
+  display: block;
+  margin: 0 auto;
+}
+
+input {
+  /* 입력 칸 스타일 */
+  display: block;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  width: 300px;
+  margin: 10px auto;
+  text-align: center;
+}
