@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게임 시작하기</title>
+
+    <style>
+      body {
+        /*body 태그 안의 요소들을 유연하게 배치할 수 있게 바꿈 ➡ 즉, 정렬이 쉬워짐*/
+        display: flex;
+        flex-direction: column; /* 세로로 정렬 */
+        justify-content: center; /* 세로 중앙 */
+        align-items: center; /* 가로 중앙 */
+        height: 100vh; /* 화면 전체 높이 */
+        margin: 0; /* 기본 여백 제거 */
+        background-color: #f0f0f0;
+      }
+      button {
+        padding: 15px 30px; /* 버튼 안쪽 공간 */
+        font-size: 30px;
+        cursor: pointer; /* 마우스 올리면 손가락 모양 */
+        border-radius: 20px; /* 모서리 둥글게 */
+        border: none;
+        background-color: #4caf50;
+        color: white;
+      }
+
+      button:hover {
+        /* 마우스 올렸을때 색 변경 */
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>산성비 게임</h1>
+    <form
+      action="http://127.0.0.1:5500/%EC%82%B0%EC%84%B1%EB%B9%84/index.html"
+      target="_blank"
+    >
+      <button type="submit">게임 시작하기</button>
+    </form>
+  </body>
+</html>
