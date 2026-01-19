@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Count 1" onclick="cnt1()alert">
+    <input type="button" value="Count 2" onclick="cnt2()">
+    <script>
+        function cnt1(){
+            consol.log("hello") // 이벤트 핸들러
+        }
+       let bar = 2;
+       bar = 2.0;
+       bar = "2";
+       bar = true;
+       // Dynamic typing
+       
+    </script>
+</body>
+</html>
